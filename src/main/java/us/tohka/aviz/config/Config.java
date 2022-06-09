@@ -15,6 +15,7 @@ public class Config {
     private int itemPerNameX;
     private int itemQuantityX;
     private int itemCostX;
+    private int itemFontSize;
     // and it also works recursively
     private List<Label> labels;
     private List<Item> items;
@@ -54,6 +55,10 @@ public class Config {
 
     public int getItemCostX() {
         return itemCostX;
+    }
+
+    public int getItemFontSize() {
+        return itemFontSize;
     }
 
     public List<Label> getLabels() {

@@ -30,6 +30,7 @@ public class PageRenderer {
     public static List<BufferedImage> getPages(String date, String whereTo, boolean print) {
         Config config = Main.getConfig();
         int counter = config.getNewLineAtItem();
+        int itemFontSize = config.getItemFontSize();
         int number = 0;
         List<BufferedImage> images = new ArrayList<BufferedImage>();
         Graphics2D graphics = null;
@@ -51,11 +52,11 @@ public class PageRenderer {
             counter++;
             number++;
 
-            Utils.addText(graphics, Utils.pad(number), Font.PLAIN, 10, config.getItemNumberX(), y);
-            Utils.addText(graphics, item.getName(), Font.PLAIN, 10, config.getItemNameX(), y);
-            Utils.addText(graphics, config.getPerName(), Font.PLAIN, 10, config.getItemPerNameX(), y);
-            Utils.addText(graphics, String.valueOf(item.getQuantity()), Font.PLAIN, 10, config.getItemQuantityX(), y);
-            Utils.addText(graphics, Utils.formatCost(item.getCost()), Font.PLAIN, 10, config.getItemCostX(), y);
+            Utils.addText(graphics, Utils.pad(number), Font.PLAIN, itemFontSize, config.getItemNumberX(), y);
+            Utils.addText(graphics, item.getName(), Font.PLAIN, itemFontSize, config.getItemNameX(), y);
+            Utils.addText(graphics, config.getPerName(), Font.PLAIN, itemFontSize, config.getItemPerNameX(), y);
+            Utils.addText(graphics, String.valueOf(item.getQuantity()), Font.PLAIN, itemFontSize, config.getItemQuantityX(), y);
+            Utils.addText(graphics, Utils.formatCost(item.getCost()), Font.PLAIN, itemFontSize, config.getItemCostX(), y);
         }
 
         return images;

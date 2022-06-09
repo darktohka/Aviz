@@ -37,6 +37,7 @@ public class SettingsGUI extends AvizGUI {
         settingPanel.add(new SettingPanel(this, "itemPerNameX", SettingPanel.INTEGER_TYPE, "Item piece on the X axis:"));
         settingPanel.add(new SettingPanel(this, "itemQuantityX", SettingPanel.INTEGER_TYPE, "Item quantity on the X axis:"));
         settingPanel.add(new SettingPanel(this, "itemCostX", SettingPanel.INTEGER_TYPE, "Item cost on the X axis:"));
+        settingPanel.add(new SettingPanel(this, "itemFontSize", SettingPanel.INTEGER_TYPE, "Item font size:"));
         settingPanel.add(new SettingPanel(this, "perName", SettingPanel.STRING_TYPE, "Localization for \"piece\":"));
 
         topPanel.add(settingPanel);
