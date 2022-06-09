@@ -98,7 +98,7 @@ public class Utils {
             return image;
         }
 
-        double ratio = image.getWidth() / ((double) image.getHeight());
+        double ratio = image.getHeight() / ((double) image.getWidth());
         int height = (int) Math.round(width * ratio);
 
         BufferedImage resized = new BufferedImage(width, height, image.getType());

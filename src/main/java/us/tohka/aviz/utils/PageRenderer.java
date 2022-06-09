@@ -60,7 +60,7 @@ public class PageRenderer {
         }
 
         if (!print) {
-            images.replaceAll(image -> Utils.scaleImageToMaxWidth(image, 600));
+            images.replaceAll(image -> Utils.scaleImageToMaxWidth(image, 800));
         }
 
         return images;
