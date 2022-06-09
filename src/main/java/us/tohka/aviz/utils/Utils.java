@@ -145,6 +145,10 @@ public class Utils {
     }
 
     public static void addText(Graphics2D graphics, String text, int type, int size, int x, int y, String date, String whereTo) {
+        if (size <= 0) {
+            return;
+        }
+
         if (text.contains("[DATE]")) {
             text = text.replace("[DATE]", date);
         } else if (text.contains("[WHERE]")) {
