@@ -98,8 +98,8 @@ public class Utils {
             return image;
         }
 
-        double ratio = image.getWidth() / image.getHeight();
-        int height = (int) Math.floor(width * ratio);
+        double ratio = image.getWidth() / ((double) image.getHeight());
+        int height = (int) Math.round(width * ratio);
 
         BufferedImage resized = new BufferedImage(width, height, image.getType());
         Graphics2D graphics = resized.createGraphics();
