@@ -1,6 +1,8 @@
 package us.tohka.aviz.config;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Config {
 
@@ -55,10 +57,18 @@ public class Config {
     }
 
     public List<Label> getLabels() {
+        if (Objects.isNull(labels)) {
+            labels = new ArrayList<Label>();
+        }
+
         return labels;
     }
 
     public List<Item> getItems() {
+        if (Objects.isNull(items)) {
+            items = new ArrayList<Item>();
+        }
+
         return items;
     }
 
