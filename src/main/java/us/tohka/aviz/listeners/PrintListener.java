@@ -47,7 +47,7 @@ public class PrintListener implements ActionListener {
         if (saveOnly) {
             String uuid = UUID.randomUUID().toString().substring(0, 4);
 
-            for (int i = 0, s = images.size(); i < s; i++) {
+            for (int i = 0, s = images.size(); i < s; ++i) {
                 BufferedImage image = images.get(i);
                 File file = new File(uuid + "-" + i + ".png");
 

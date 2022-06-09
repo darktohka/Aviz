@@ -35,7 +35,7 @@ public class MultiPrintListener implements ActionListener {
         DayTableModel model = gui.getModel();
         List<JCheckBox> destinationBoxes = new ArrayList<JCheckBox>();
 
-        for (int i = 0; i < model.getRowCount(); i++) {
+        for (int i = 0; i < model.getRowCount(); ++i) {
             String destination = (String) model.getValueAt(i, 1);
 
             if (destination.isEmpty()) {

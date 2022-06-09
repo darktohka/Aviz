@@ -59,6 +59,10 @@ public class PageRenderer {
             Utils.addText(graphics, Utils.formatCost(item.getCost()), Font.PLAIN, itemFontSize, config.getItemCostX(), y);
         }
 
+        if (!print) {
+            images.replaceAll(image -> Utils.scaleImageToMaxWidth(image, 600));
+        }
+
         return images;
     }
 

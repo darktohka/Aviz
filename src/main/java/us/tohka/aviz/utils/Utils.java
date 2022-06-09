@@ -92,6 +92,25 @@ public class Utils {
         return new BufferedImage(model, raster, isAlphaPremultiplied, null);
     }
 
+    public static BufferedImage scaleImageToMaxWidth(BufferedImage image, int width) {
+        if (image.getWidth() < width) {
+            // No need to resize this image
+            return image;
+        }
+
+        double ratio = image.getWidth() / image.getHeight();
+        int height = (int) Math.floor(width * ratio);
+
+        BufferedImage resized = new BufferedImage(width, height, image.getType());
+        Graphics2D graphics = resized.createGraphics();
+
+        graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        graphics.drawImage(image, 0, 0, width, height, 0, 0, image.getWidth(), image.getHeight(), null);
+        graphics.dispose();
+
+        return resized;
+    }
+
     public static void centerFrame(JFrame frame) {
         GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle bounds = environment.getScreenDevices()[0].getDefaultConfiguration().getBounds();
