@@ -3,6 +3,7 @@ version = "1.0-SNAPSHOT"
 
 plugins {
     id("java")
+    id("application")
 }
 
 repositories {
@@ -11,6 +12,10 @@ repositories {
 
 dependencies {
     implementation("com.google.code.gson:gson:+")
+}
+
+application {
+    mainClass.set("us.tohka.aviz.Main")
 }
 
 val fatJar = task("fatJar", type = Jar::class) {
