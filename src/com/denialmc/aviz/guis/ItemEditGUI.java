@@ -18,25 +18,25 @@ import com.denialmc.aviz.models.ItemTableModel;
 import com.denialmc.aviz.utils.Utils;
 
 public class ItemEditGUI extends AvizGUI {
-	
-	public void setup() {
-		setLayout(new BorderLayout());
-		
-		JPanel topPanel = new JPanel();
-		JPanel bottomPanel = new JPanel();
-		
-		JTable table = new JTable(new ItemTableModel(Main.getConfig().getItems()));
-		
-		table.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "delete");
-		table.getActionMap().put("delete", new RemoveListener(table));
 
-		topPanel.add(new JScrollPane(table));
-		bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
-		Utils.createButton(bottomPanel, "Back", 100, 50, new DestinationListener(this, DestinationListener.MAIN));
-		Utils.createButton(bottomPanel, "Add (Up)", 100, 50, new AddListener(table, -1));
-		Utils.createButton(bottomPanel, "Add (Down)", 100, 50, new AddListener(table, 1));
-		Utils.createButton(bottomPanel, "Save", 100, 50, new SaveListener());
-		add(topPanel, BorderLayout.CENTER);
-		add(bottomPanel, BorderLayout.SOUTH);
-	}
+    public void setup() {
+        setLayout(new BorderLayout());
+
+        JPanel topPanel = new JPanel();
+        JPanel bottomPanel = new JPanel();
+
+        JTable table = new JTable(new ItemTableModel(Main.getConfig().getItems()));
+
+        table.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "delete");
+        table.getActionMap().put("delete", new RemoveListener(table));
+
+        topPanel.add(new JScrollPane(table));
+        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
+        Utils.createButton(bottomPanel, "Back", 100, 50, new DestinationListener(this, DestinationListener.MAIN));
+        Utils.createButton(bottomPanel, "Add (Up)", 100, 50, new AddListener(table, -1));
+        Utils.createButton(bottomPanel, "Add (Down)", 100, 50, new AddListener(table, 1));
+        Utils.createButton(bottomPanel, "Save", 100, 50, new SaveListener());
+        add(topPanel, BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.SOUTH);
+    }
 }

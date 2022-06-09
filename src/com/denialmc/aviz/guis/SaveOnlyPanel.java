@@ -8,24 +8,24 @@ import javax.swing.JRadioButton;
 
 public class SaveOnlyPanel extends JPanel {
 
-	public JRadioButton saveOnly;
-	public JRadioButton print;
-	
-	public boolean getSaveOnly() {
-		return saveOnly.isSelected();
-	}
-	
-	public SaveOnlyPanel() {
-		super();
-		setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
-		
-		ButtonGroup group = new ButtonGroup();
-		saveOnly = new JRadioButton("Save Only", false);
-		print = new JRadioButton("Print", true);
+    public JRadioButton saveOnly;
+    public JRadioButton print;
 
-		group.add(saveOnly);
-		group.add(print);
-		add(saveOnly);
-		add(print);
-	}
+    public boolean getSaveOnly() {
+        return saveOnly.isSelected();
+    }
+
+    public SaveOnlyPanel() {
+        super();
+        setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
+
+        ButtonGroup group = new ButtonGroup();
+        saveOnly = new JRadioButton("Save Only", false);
+        print = new JRadioButton("Print", true);
+
+        group.add(saveOnly);
+        group.add(print);
+        add(saveOnly);
+        add(print);
+    }
 }

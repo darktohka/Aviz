@@ -8,15 +8,15 @@ import com.denialmc.aviz.items.SettingPanel;
 
 public class SettingIntListener implements ChangeListener {
 
-	private JSpinner spinner;
+    private JSpinner spinner;
 
-	public SettingIntListener(JSpinner spinner) {
-		this.spinner = spinner;
-	}
-	
-	@Override
-	public void stateChanged(ChangeEvent event) {
-		SettingPanel panel = (SettingPanel) spinner.getParent();
-		panel.updateValue(spinner.getValue());
-	}
+    public SettingIntListener(JSpinner spinner) {
+        this.spinner = spinner;
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent event) {
+        SettingPanel panel = (SettingPanel) spinner.getParent();
+        panel.updateValue(spinner.getValue());
+    }
 }

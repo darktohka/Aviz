@@ -12,62 +12,63 @@ import javax.swing.UIManager;
 import com.denialmc.aviz.config.Config;
 import com.denialmc.aviz.guis.MainGUI;
 import com.denialmc.aviz.utils.Utils;
-import com.google.gson.Gson;
+import com.google.gson.Gson;
+
 public class Main {
 
-	private static Config config;
-	private static BufferedImage image;
-	private static Image icon;
-	
-	public static Config getConfig() {
-		return config;
-	}
-	
-	public static BufferedImage getImage() {
-		return image;
-	}
-	
-	public static Image getIcon() {
-		return icon;
-	}
-	
-	public static void main(String[] args) {
-		System.out.println("Welcome to Aviz by DenialMC!");
-		System.out.println("Loading config...");
-		File file = new File("config.json");
-		
-		if (!file.exists()) {
-			Utils.writeToFile(file, "{}");
-		}
+    private static Config config;
+    private static BufferedImage image;
+    private static Image icon;
 
-		config = new Gson().fromJson(Utils.readFile("config.json"), Config.class);
-		System.out.println("Loaded config!");
-		System.out.println("Loading aviz image...");
+    public static Config getConfig() {
+        return config;
+    }
 
-		try {
-			image = ImageIO.read(new File("image.png"));
-		} catch (Exception e) {
-			System.out.println("Aviz image couldn't be read!");
-			return;
-		}
+    public static BufferedImage getImage() {
+        return image;
+    }
 
-		System.out.println("Loaded aviz image!");
-		
-		System.out.println("Loading icon...");
-		icon = Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/icon.png"));
-		System.out.println("Loaded icon!");
-		
-		System.out.println("Setting look and feel...");
+    public static Image getIcon() {
+        return icon;
+    }
 
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			System.out.println("Set look and feel!");
-		} catch (Exception e) {
-			System.out.println("Couldn't set system look and feel.");
-		}
+    public static void main(String[] args) {
+        System.out.println("Welcome to Aviz by DenialMC!");
+        System.out.println("Loading config...");
+        File file = new File("config.json");
 
-		System.out.println("Starting...");
-		SwingUtilities.invokeLater(() -> new MainGUI().setVisible(true));
-		System.out.println("Started!");
-	}
+        if (!file.exists()) {
+            Utils.writeToFile(file, "{}");
+        }
+
+        config = new Gson().fromJson(Utils.readFile("config.json"), Config.class);
+        System.out.println("Loaded config!");
+        System.out.println("Loading aviz image...");
+
+        try {
+            image = ImageIO.read(new File("image.png"));
+        } catch (Exception e) {
+            System.out.println("Aviz image couldn't be read!");
+            return;
+        }
+
+        System.out.println("Loaded aviz image!");
+
+        System.out.println("Loading icon...");
+        icon = Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/icon.png"));
+        System.out.println("Loaded icon!");
+
+        System.out.println("Setting look and feel...");
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            System.out.println("Set look and feel!");
+        } catch (Exception e) {
+            System.out.println("Couldn't set system look and feel.");
+        }
+
+        System.out.println("Starting...");
+        SwingUtilities.invokeLater(() -> new MainGUI().setVisible(true));
+        System.out.println("Started!");
+    }
 }

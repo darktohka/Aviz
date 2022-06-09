@@ -13,32 +13,32 @@ import com.denialmc.aviz.models.LabelTableModel;
 
 public class RemoveListener extends AbstractAction {
 
-	private JTable table;
-	
-	public RemoveListener(JTable table) {
-		this.table = table;
-	}
-	
-	public JTable getTable() {
-		return table;
-	}
+    private JTable table;
 
-	@Override
-	public void actionPerformed(ActionEvent event) {
-		int row = table.getSelectedRow();
-		
-		if (row == -1) {
-			return;
-		}
-		
-		TableModel model = table.getModel();
-		
-		if (model instanceof ItemTableModel) {
-			Main.getConfig().getItems().remove(row);
-		} else if (model instanceof LabelTableModel) {
-			Main.getConfig().getLabels().remove(row);
-		}
+    public RemoveListener(JTable table) {
+        this.table = table;
+    }
 
-		((AbstractTableModel) model).fireTableDataChanged();
-	}
+    public JTable getTable() {
+        return table;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        int row = table.getSelectedRow();
+
+        if (row == -1) {
+            return;
+        }
+
+        TableModel model = table.getModel();
+
+        if (model instanceof ItemTableModel) {
+            Main.getConfig().getItems().remove(row);
+        } else if (model instanceof LabelTableModel) {
+            Main.getConfig().getLabels().remove(row);
+        }
+
+        ((AbstractTableModel) model).fireTableDataChanged();
+    }
 }

@@ -32,67 +32,67 @@ import com.denialmc.aviz.renderers.ErrorCellRenderer;
 import com.denialmc.aviz.utils.Utils;
 
 public class LabelEditGUI extends AvizGUI {
-	
-	private JLabel image;
-	private JTable table;
-	
-	public void setup() {
-		setLayout(new BorderLayout());
-		
-		JPanel topPanel = new JPanel();
-		JPanel bottomPanel = new JPanel();
-		JPanel buttonPanel = new JPanel();
-		
-		topPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
-		bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
-		
-		table = new JTable(new LabelTableModel(this, Main.getConfig().getLabels()));
-		TableColumnModel model = table.getColumnModel();
-		ErrorCellRenderer positiveRenderer = new ErrorCellRenderer(ErrorCellRenderer.POSITIVE_MODE);
-		PreviewMouseListener previewListener = new PreviewMouseListener(this);
-		
-		table.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "delete");
-		table.getActionMap().put("delete", new RemoveListener(table));
-		table.getSelectionModel().addListSelectionListener(new LabelSelectListener(this));
-		model.getColumn(1).setCellRenderer(new ErrorCellRenderer(ErrorCellRenderer.LIST_MODE, "PLAIN", "BOLD", "ITALIC"));
-		IntStream.range(2, 4).forEach(n -> model.getColumn(n).setCellRenderer(positiveRenderer));
-		topPanel.add(new JScrollPane(table));
-		
-		image = new JLabel();
-		image.addMouseListener(previewListener);
-		image.addMouseWheelListener(previewListener);
-		image.addMouseMotionListener(previewListener);
-		setImageWithLabel(null);
-		topPanel.add(image);
-		
-		Utils.createLabel(bottomPanel, "Special modifiers: [DATE], [WHERE]", Font.BOLD, 14, Color.BLACK);
-		Utils.createLabel(bottomPanel, "Font styles: PLAIN, BOLD", Font.BOLD, 14, Color.BLACK);
-		bottomPanel.add(Box.createVerticalStrut(5));
-		Utils.createButton(buttonPanel, "Back", 100, 50, new DestinationListener(this, DestinationListener.MAIN));
-		Utils.createButton(buttonPanel, "Add", 100, 50, new AddListener(table, 0));
-		Utils.createButton(buttonPanel, "Save", 100, 50, new SaveListener());
-		bottomPanel.add(buttonPanel);
-		add(topPanel, BorderLayout.CENTER);
-		add(bottomPanel, BorderLayout.SOUTH);
-	}
-	
-	public JLabel getImage() {
-		return image;
-	}
-	
-	public JTable getTable() {
-		return table;
-	}
-	
-	public void setImageWithLabel(Label label) {
-		BufferedImage newImage = Utils.copyImage(Main.getImage());
-		Graphics2D graphics = (Graphics2D) newImage.getGraphics();
-		
-		if (label != null) {
-			Utils.addText(graphics, label, Utils.formatDate(), "Destination");
-		}
-		
-		image.setIcon(new ImageIcon(newImage));
-	}
+
+    private JLabel image;
+    private JTable table;
+
+    public void setup() {
+        setLayout(new BorderLayout());
+
+        JPanel topPanel = new JPanel();
+        JPanel bottomPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
+
+        topPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
+        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
+
+        table = new JTable(new LabelTableModel(this, Main.getConfig().getLabels()));
+        TableColumnModel model = table.getColumnModel();
+        ErrorCellRenderer positiveRenderer = new ErrorCellRenderer(ErrorCellRenderer.POSITIVE_MODE);
+        PreviewMouseListener previewListener = new PreviewMouseListener(this);
+
+        table.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "delete");
+        table.getActionMap().put("delete", new RemoveListener(table));
+        table.getSelectionModel().addListSelectionListener(new LabelSelectListener(this));
+        model.getColumn(1).setCellRenderer(new ErrorCellRenderer(ErrorCellRenderer.LIST_MODE, "PLAIN", "BOLD", "ITALIC"));
+        IntStream.range(2, 4).forEach(n -> model.getColumn(n).setCellRenderer(positiveRenderer));
+        topPanel.add(new JScrollPane(table));
+
+        image = new JLabel();
+        image.addMouseListener(previewListener);
+        image.addMouseWheelListener(previewListener);
+        image.addMouseMotionListener(previewListener);
+        setImageWithLabel(null);
+        topPanel.add(image);
+
+        Utils.createLabel(bottomPanel, "Special modifiers: [DATE], [WHERE]", Font.BOLD, 14, Color.BLACK);
+        Utils.createLabel(bottomPanel, "Font styles: PLAIN, BOLD", Font.BOLD, 14, Color.BLACK);
+        bottomPanel.add(Box.createVerticalStrut(5));
+        Utils.createButton(buttonPanel, "Back", 100, 50, new DestinationListener(this, DestinationListener.MAIN));
+        Utils.createButton(buttonPanel, "Add", 100, 50, new AddListener(table, 0));
+        Utils.createButton(buttonPanel, "Save", 100, 50, new SaveListener());
+        bottomPanel.add(buttonPanel);
+        add(topPanel, BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.SOUTH);
+    }
+
+    public JLabel getImage() {
+        return image;
+    }
+
+    public JTable getTable() {
+        return table;
+    }
+
+    public void setImageWithLabel(Label label) {
+        BufferedImage newImage = Utils.copyImage(Main.getImage());
+        Graphics2D graphics = (Graphics2D) newImage.getGraphics();
+
+        if (label != null) {
+            Utils.addText(graphics, label, Utils.formatDate(), "Destination");
+        }
+
+        image.setIcon(new ImageIcon(newImage));
+    }
 }
