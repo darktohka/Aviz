@@ -16,9 +16,10 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 'nightly'
+          gradle-version: 'current'
           arguments: 'build'
-      - uses: actions/upload-artifact@v3
+      - name: Upload JAR
+        uses: actions/upload-artifact@v3
         with:
           name: Aviz
           path: build/libs/Aviz-1.0-SNAPSHOT.jar
