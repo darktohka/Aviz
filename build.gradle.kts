@@ -24,6 +24,7 @@ val fatJar = task("fatJar", type = Jar::class) {
     }
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
     with(tasks.jar.get() as CopySpec)
+    destinationDirectory.set(layout.buildDirectory.dir("dist"))
 }
 
 tasks {
